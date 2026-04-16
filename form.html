@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Pendaftaran - PPDB Sekolah Rakyat Nusantara</title>
+    <link rel="stylesheet" href="asset/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <div class="logo-wrap">
+          <div class="logo-icon">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c3 3 9 3 12 0v-5" />
+            </svg>
+          </div>
+          <div class="logo-text">
+            <h1>Sekolah Rakyat Nusantara</h1>
+            <span>Portal PPDB Resmi T.A. 2030/2031</span>
+          </div>
+        </div>
+        <nav>
+          <a href="index.html">Beranda</a>
+          <a href="alur.html">Alur Pendaftaran</a>
+          <a href="form.html" class="active">Daftar Sekarang</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero mini">
+      <h2 class="fade-in">Formulir <em>Pendaftaran PPDB</em></h2>
+    </section>
+
+    <main>
+      <div class="form-layout">
+        <div class="form-card fade-in">
+          <h2 class="form-title">Data Calon Peserta Didik</h2>
+          <p class="form-subtitle">
+            Semua kolom wajib diisi dengan lengkap dan benar sesuai dokumen
+            asli.
+          </p>
+
+          <form id="ppdb-form">
+            <div class="form-group">
+              <label for="gelombang">Gelombang Pendaftaran</label>
+              <select
+                id="gelombang"
+                name="gelombang"
+                onchange="updateGelombangInfo()"
+              >
+                <option value="">Pilih Gelombang</option>
+                <option value="1">Gelombang 1 (1 Juni - 30 Juni 2030)</option>
+                <option value="2">
+                  Gelombang 2 (1 Agustus - 31 Agustus 2030)
+                </option>
+              </select>
+              <div id="gelombang-info" class="gelombang-info-box"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="jalur">Jalur Pendaftaran</label>
+              <select id="jalur" name="jalur">
+                <option value="">Pilih Jalur</option>
+                <option value="Zonasi">
+                  Zonasi (berdasarkan domisili / jarak)
+                </option>
+                <option value="Prestasi">
+                  Prestasi (nilai rapor / kejuaraan)
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="nama">Nama Lengkap</label>
+              <input
+                type="text"
+                id="nama"
+                name="nama"
+                placeholder="Masukkan nama lengkap sesuai akta kelahiran"
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nik">NIK (16 Digit)</label>
+                <input
+                  type="number"
+                  id="nik"
+                  name="nik"
+                  placeholder="3578xxxxxxxxxx"
+                />
+              </div>
+              <div class="form-group">
+                <label for="tempat_lahir">Tempat Lahir</label>
+                <input
+                  type="text"
+                  id="tempat_lahir"
+                  name="tempat_lahir"
+                  placeholder="Kota kelahiran"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="tgl_lahir">Tanggal Lahir</label>
+                <input type="date" id="tgl_lahir" name="tgl_lahir" />
+              </div>
+              <div class="form-group">
+                <label for="jenis_kelamin">Jenis Kelamin</label>
+                <select id="jenis_kelamin" name="jenis_kelamin">
+                  <option value="">Pilih</option>
+                  <option value="L">Laki-laki</option>
+                  <option value="P">Perempuan</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="asal_sekolah">Asal Sekolah</label>
+              <input
+                type="text"
+                id="asal_sekolah"
+                name="asal_sekolah"
+                placeholder="Nama sekolah asal (SMP/MTs)"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="alamat">Alamat Lengkap</label>
+              <input
+                type="text"
+                id="alamat"
+                name="alamat"
+                placeholder="Jl. Contoh No. 1, RT 01/RW 01, Kelurahan, Kecamatan, Kota"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="hp_wali">No. HP Orang Tua / Wali</label>
+              <input
+                type="tel"
+                id="hp_wali"
+                name="hp_wali"
+                placeholder="08xxxxxxxxxx"
+              />
+            </div>
+
+            <button type="button" class="btn btn-full" onclick="handleSubmit()">
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+              Kirim Pendaftaran
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-topbar">
+        <div class="footer-topbar-inner">
+          <div class="footer-topbar-item">
+            <div class="tbi">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-5.99-5.99 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                />
+              </svg>
+            </div>
+            <span>0800-1234-567 (Bebas Pulsa)</span>
+          </div>
+          <div class="footer-topbar-item">
+            <div class="tbi">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </div>
+            <span>ppdb@sekolahrakyatnusantara.sch.id</span>
+          </div>
+          <div class="footer-topbar-item">
+            <div class="tbi">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <span>Senin - Jumat: 08.00 - 16.00 WIB</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-body">
+        <div class="footer-col">
+          <h5>Menu</h5>
+          <ul class="footer-nav-list">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="alur.html">Alur Pendaftaran</a></li>
+            <li><a href="form.html">Daftar Sekarang</a></li>
+            <li><a href="index.html#jadwal">Jadwal PPDB</a></li>
+            <li><a href="form.html">Gelombang 1 & 2</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Bantuan</h5>
+          <ul class="footer-help-list">
+            <li><a href="alur.html">Tata Cara Pendaftaran</a></li>
+            <li><a href="alur.html">Persyaratan PPDB</a></li>
+            <li><a href="index.html#jadwal">Jadwal Gelombang 1</a></li>
+            <li><a href="index.html#jadwal">Jadwal Gelombang 2</a></li>
+            <li><a href="form.html">Formulir Online</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Hubungi Kami</h5>
+          <div class="footer-contact-item">
+            <div class="fci-icon">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <span
+              >Jl. Pendidikan No. 1, Kecamatan Monokorobo,<br />Kota Bolokotono,
+              Jawa Selatan 99999</span
+            >
+          </div>
+          <div class="footer-contact-item">
+            <div class="fci-icon">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-5.99-5.99 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                />
+              </svg>
+            </div>
+            <a>0800-1234-567 (bebas pulsa)</a>
+          </div>
+          <div class="footer-contact-item">
+            <div class="fci-icon">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                />
+              </svg>
+            </div>
+            <a>0812-3456-7890 (WhatsApp)</a>
+          </div>
+          <div class="footer-contact-item">
+            <div class="fci-icon">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </div>
+            <a>ppdb@sekolahrakyatnusantara.sch.id</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+    <script src="asset/javascript/script.js"></script>
+  </body>
+</html>
